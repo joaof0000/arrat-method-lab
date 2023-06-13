@@ -1,8 +1,3 @@
-// Stub up the skeleton of the code...
-const mastermind = games.find(toy => );
-
-const mastermind = games.find(toy => toy.name === 'Mastermind');
-
 
 const inventors = [
   { first: 'Albert', last: 'Einstein', year: 1879, passed: 1955 },
