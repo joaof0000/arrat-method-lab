@@ -16,6 +16,8 @@ const inventors = [
 
 // Array.prototype.filter()
 // 1. Filter the array of inventors into a new array containing only the inventors born in the 1500's
+const inventorsBornIn1500s = inventors.filter(inventor => inventor.year >= 1500 && inventor.year < 1600);
+console.log(inventorsBornIn1500s);
 
 
 
@@ -23,21 +25,29 @@ const inventors = [
 // 2. Map the array of the inventors into a new array containing objects with just the first and last names as properties
 // Hint:  Return a new object literal from the callback (don't mutate the object being passed in to map)
 
+const inventorNames = inventors.map(inventor => ({ first: inventor.first, last: inventor.last }));
+console.log(inventorNames);
 
 
 // Array.prototype.sort()
 // 3. Sort the inventors by birth date (year property), in ascending order
 
+const inventorsSortedByBirthDate = inventors.sort((a, b) => a.year - b.year);
+console.log(inventorsSortedByBirthDate);
 
 
 // Array.prototype.find()
 // 4. Find the inventor object with the first name of 'Ada'
 
+const adaInventor = inventors.find(inventor => inventor.first === 'Ada');
+console.log(adaInventor);
 
 
 // Array.prototype.reduce()
 // 5. How many years did all the inventors live?
 
+const totalYearsLived = inventors.reduce((total, inventor) => total + (inventor.passed - inventor.year), 0);
+console.log(totalYearsLived);
 
 
 
@@ -59,7 +69,12 @@ const people = [
 // 6. Map the people array such that the new array consists of strings with the names formatted as "First Last", e.g., "Becker, Carl" should be mapped to "Carl Becker".
 // Hint: As a start, consider using the String.prototype.split method to "split" the string using ', ' as the separator
 
-
+const formattedNames = people.map(name => {
+    const [last, first] = name.split(', ');
+    return `${first} ${last}`;
+  });
+  console.log(formattedNames);
+  
 
 
 const data = [
@@ -80,14 +95,27 @@ const devs = [
   { name: 'Lux', year: 2015 }
 ];
 
+const dataCount = data.reduce((count, item) => {
+    count[item] = (count[item] || 0) + 1;
+    return count;
+  }, {});
+  console.log(dataCount);
+  
+
 // Array.prototype.some()
 // 8. Check if at least one person is 19 or older?
 // Hint: To get today's year, use the getFullYear method of new Date(), i.e., new Date().getFullYear()
+
+const currentYear = new Date().getFullYear();
+const isNineteenOrOlder = devs.some(dev => currentYear - dev.year >= 19);
+console.log(isNineteenOrOlder);
 
 
 // Array.prototype.every()
 // 9. Check if everyone is 19 or older?
 
+const isAllNineteenOrOlder = devs.every(dev => currentYear - dev.year >= 19);
+console.log(isAllNineteenOrOlder);
 
 
 const comments = [
@@ -101,10 +129,14 @@ const comments = [
 // Array.prototype.find()
 // 10. Find the comment with the id of 823423
 
+const commentWithId = comments.find(comment => comment.id === 823423);
+console.log(commentWithId);
 
 
 // Array.prototype.findIndex()
 // 11. Find the index of the comment with an id of 123523
 
+const commentIndex = comments.findIndex(comment => comment.id === 123523);
+console.log(commentIndex);
 
 
